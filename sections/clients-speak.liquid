@@ -5,10 +5,10 @@
     <header class="page-sec-header">
         {% if section.settings.heading != blank %}
             <h1>{{ section.settings.heading }} <span class="text-primary">{{ section.settings.span_text }}</span>.</h1>
-        {% endif %}
-        {% if section.settings.discription != blank %}
+          {% endif %}
+          {% if section.settings.discription != blank %}
             <p>{{ section.settings.discription }}</p>
-        {% endif %}
+          {% endif %}
     </header>
 
     <div class="container-fluid mw-1200">
@@ -48,7 +48,7 @@
     <div class="container-fluid mw-1200">
         <div class="row">
             <div class="testimonialsCarousel mt-4">
-                {% for block in section.blocks %}
+            {% for block in section.blocks %}
                     {% if block.type == 'block-2' %}
                         <div class="testi-card">
                             <div class="testi-card-content" data-mh="testContentHeight">
@@ -61,7 +61,7 @@
                                     {% if block.settings.profile != blank %}
                                         {{ block.settings.profile | img_url: "300x" | img_tag }}
                                     {% endif %}
-                                </div>
+                                  </div>
                                 <div>
                                     {% if block.settings.name != blank %}
                                         <h5>{{ block.settings.name }}</h5>
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     {% endif %}
-                {% endfor %}
+            {% endfor %}
             </div>
         </div>
     </div>

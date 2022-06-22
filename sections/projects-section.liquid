@@ -1,0 +1,68 @@
+<section class="page-sec designed-projects">
+        <div class="container-fluid mw-1200">
+            <header class="page-sec-header">
+              {% if section.settings.heading != blank %}
+            <strong>{{ section.settings.heading }}</strong>
+          {% endif %}
+                
+            </header>
+            <div class="row">
+              {% for block in section.blocks %}
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-4">
+                      {% if block.settings.image != blank %}
+                      {{ block.settings.image | img_url: "600x" | img_tag }}
+                      {% endif %}
+                    <div class="industries-logo">
+                        {% if block.settings.logo_image != blank %}
+                        {{ block.settings.logo_image | img_url: "600x" | img_tag }}
+                        {% endif %}
+                    </div>
+                  
+                       {% if block.settings.discription != blank %}
+                       <p> {{ block.settings.discription }}</p>
+                       {% endif %}
+                    
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+{% schema %}
+{
+  "name": "why work section",
+  "settings": [
+    {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+    }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add card",
+      "settings": [
+          {
+            "type":"image_picker",
+            "id":"image",
+            "label":"image"
+          },
+          {
+            "type":"image_picker",
+            "id":"logo_image",
+            "label":"logo image"
+          },
+          {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+      ]
+    }
+  
+  ]
+  }
+{% endschema %}

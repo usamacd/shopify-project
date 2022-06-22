@@ -1,0 +1,43 @@
+ <section class="site-banner our-works-wrap pb-0">
+        <div class="container-fluid mw-1200 justify-content-center align-items-start">
+           <div class="site-banner-content text-center">
+              {% if section.settings.heading != blank %}
+             <h1>{{ section.settings.heading }}, <br /> <span class="text-primary">{{ section.settings.span_text }}</span></h1>
+               {% endif %}
+                
+                <div class="sbc-btns">
+                  {% if section.settings.button_text != blank %}
+                    <a href="{{ section.settings.button_link }}" class="btn-lets-talk">{{ section.settings.button_text }}</a>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+ {% schema %}
+  {
+    "name": "team work",
+    "settings": [
+      {
+          "type":"text",
+          "id":"heading",
+          "label":"heading"
+      },
+
+      {
+          "type":"text",
+          "id":"span_text",
+          "label":"span text"
+      },
+      {
+          "type":"url",
+          "id":"button_link",
+          "label":"button link"
+      },
+      {
+          "type":"text",
+          "id":"button_text",
+          "label":"button text"
+      }
+     ]
+    }
+  {% endschema %}

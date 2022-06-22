@@ -14330,7 +14330,7 @@ a {
 }
 
 .ap-team-char {
-  
+  background-image: url(../images/ap-t-banner-desk.png);
   padding-top: 4.375rem;
   padding-bottom: 3.125rem;
   background-size: cover;
