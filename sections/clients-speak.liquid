@@ -1,0 +1,159 @@
+
+<script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+
+  <section class="page-sec testimonials-sec">
+    <header class="page-sec-header">
+        {% if section.settings.heading != blank %}
+            <h1>{{ section.settings.heading }} <span class="text-primary">{{ section.settings.span_text }}</span>.</h1>
+        {% endif %}
+        {% if section.settings.discription != blank %}
+            <p>{{ section.settings.discription }}</p>
+        {% endif %}
+    </header>
+
+    <div class="container-fluid mw-1200">
+        <div class="testimonials-slider-wrap">
+            <div class="slider slider-for video-slider-content">
+                {% for block in section.blocks %}
+                    {% if block.type == 'block' %}
+                        <div class="ts-slider-content-wrap">
+                            <div class="ts-slider-video">
+                                <a class="btn-play" data-bs-toggle="modal" data-bs-target="#videomodal1">
+                                    <i class="icon-Pause"></i>
+                                </a>
+                                {% if block.settings.slider_image != blank %}
+                                    {{ block.settings.slider_image | img_url: "600x" | img_tag }}
+                                {% endif %}
+                            </div>
+                            <div class="testi-vido-card ts-slider-content vb-bg">
+                                <div class="t-content">
+                                    <div class="quote-image-wrap">
+                                        {% if block.settings.quote_img != blank %}
+                                            {{ block.settings.quote_img | img_url: "600x" | img_tag }}
+                                        {% endif %}
+                                    </div> 
+                                    {% if block.settings.discription != blank %}
+                                        <p>{{ block.settings.discription }}</p>
+                                    {% endif %}
+                                </div>     
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid mw-1200">
+        <div class="row">
+            <div class="testimonialsCarousel mt-4">
+                {% for block in section.blocks %}
+                    {% if block.type == 'block-2' %}
+                        <div class="testi-card">
+                            <div class="testi-card-content" data-mh="testContentHeight">
+                                {% if block.settings.discription != blank %}
+                                    <p>{{ block.settings.discription }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="testi-card-own">
+                                <div class="ratio ratio-1x1">
+                                    {% if block.settings.profile != blank %}
+                                        {{ block.settings.profile | img_url: "300x" | img_tag }}
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    {% if block.settings.name != blank %}
+                                        <h5>{{ block.settings.name }}</h5>
+                                    {% endif %}
+                                    {% if block.settings.project != blank %}
+                                        <p class="mb-0">{{ block.settings.project }}</p>
+                                    {% endif %}
+                                    {% if block.settings.designation != blank %}
+                                        <p>{{ block.settings.designation }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+{% schema %}
+{
+    "name": "clients speak",
+    "settings": [
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add slider",
+      "settings": [
+        {
+            "type":"image_picker",
+            "id":"slider_image",
+            "label":"slider image"
+        },
+        {
+            "type":"image_picker",
+            "id":"quote_img",
+            "label":"quote image"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+      ] 
+    },
+    {
+      "type": "block-2",
+      "name": "add image2",
+      "settings": [
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        },
+        {
+          "type": "image_picker",
+          "id": "profile",
+          "label": "Image"
+        },
+        {
+            "type":"text",
+            "id":"name",
+            "label":"name"
+        },
+        {
+            "type":"text",
+            "id":"project",
+            "label":"project"
+        },
+        {
+            "type":"text",
+            "id":"designation",
+            "label":"designation"
+        }
+      ]
+    }
+
+  ]
+  }
+{% endschema %}

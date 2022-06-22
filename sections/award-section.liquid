@@ -1,0 +1,75 @@
+<script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+<section class="startups-sec page-sec awards-sec pb-5">
+    <header class="page-sec-header">
+        {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+          {% endif %}
+          {% if section.settings.discription != blank %}
+            <p>{{ section.settings.discription }}</p>
+            {% endif %}
+    </header>
+    <div class="container-fluid">
+      <div id="awards-carousel" class="slick-carousel owl-carousel owl-theme">
+        {% for block in section.blocks %}
+         <div class="row text-center align-items-center justify-content-center">
+            <div class="col-xs-12 d-flex text-center align-items-center justify-content-center award-icon my-4">
+              {% if block.settings.select_image != blank %}
+                {{ block.settings.select_image | img_url: "300x" | img_tag }}
+              {% endif %}
+            </div>
+            <div class="col-xs-12 d-flex text-center align-items-center justify-content-center award-icon my-4">
+            {% if block.settings.select_image2 != blank %}
+             <a href="{{ block.settings.image_link }}" target="_blank"> {{ block.settings.select_image2 | img_url: "300x" | img_tag }}  </a>
+            {% endif %}
+            </div>
+         </div>
+        {% endfor %}
+      </div>
+    </div>
+ </section>
+
+
+
+ {% schema %}
+{
+  "name": "award section",
+  "max_blocks": 10,
+  "settings": [
+    {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+     },
+     {
+        "type":"textarea",
+        "id":"discription",
+        "label":"discription"
+    }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add image",
+      "settings": [
+          {
+            "type":"image_picker",
+            "id":"select_image",
+            "label":"select image"
+          },
+          {
+            "type":"image_picker",
+            "id":"select_image2",
+            "label":"select image"
+          },
+          {
+            "type":"url",
+            "id":"image_link",
+            "label":"image link"
+        }        
+      ]
+    }
+  
+  ]
+  }
+{% endschema %}

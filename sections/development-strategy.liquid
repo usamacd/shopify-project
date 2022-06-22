@@ -1,0 +1,62 @@
+  <div class="experi-sec page-sec">
+        <header class="page-sec-header experi-sec-p">
+           {% if section.settings.discription != blank %}
+          <p>{{ section.settings.discription }}</p>
+          {% endif %}
+
+        </header>
+        <div class="container-fluid mw-1200">
+            <div class="row">
+              {% for block in section.blocks %}
+                <div class="col-lg-4 ">
+                    <div class="ap-exp-box">
+                        <div class="ap-bg-pink"style="background:{{ block.settings.custom_background_color }}">{{ block.settings.number }}</div>
+                      {% if block.settings.discription != blank %}
+                      <p>{{ block.settings.discription }}</p>
+                      {% endif %}
+                     
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+
+ {% schema %}
+  {
+    "name": "development strategy",
+    "settings": [
+      {
+          "type":"textarea",
+          "id":"discription",
+          "label":"discription"
+      }
+    ],
+  
+    "blocks":[
+      {
+        "type": "block",
+        "name": "Add card",
+        "settings": [
+			{
+                "type": "color",
+                "id": "custom_background_color",
+                "label": "Background color",
+                "default": "#ccc"
+            },
+            {
+                "type":"text",
+                "id":"number",
+                "label":"number"
+            },
+            {
+                "type":"textarea",
+                "id":"discription",
+                "label":"discription"
+            }
+         ]
+       }
+    
+      ]
+    }
+  {% endschema %}

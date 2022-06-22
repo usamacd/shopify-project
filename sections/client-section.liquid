@@ -1,0 +1,172 @@
+    <section class="page-sec clients-sec">
+        <header class="page-sec-header">
+            {% if section.settings.heading != blank %}
+                <h2>{{ section.settings.heading }}</h2>
+              {% endif %}
+              {% if section.settings.discription != blank %}
+                <p>{{ section.settings.discription }}</p>
+                {% endif %}
+        </header>
+         <div class="container-fluid mw-1200">
+            <div class="cs-logos">
+              {% for block in section.blocks %}
+                {% if block.type == 'block-1' %}
+              <div class="cs-logo-col">
+                  <div class="cs-logo-box">
+                    {{ block.settings.image | img_url: "100x" | img_tag }}
+                  </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+
+
+          {% for block in section.blocks %}
+            {% if block.type == 'block-2' %}
+              <div class="cs-logo-col">
+                  <div class="cs-logo-box">
+                    {{ block.settings.image1 | img_url: "100x" | img_tag }}
+                  </div>
+                  <div class="cs-logo-box">
+                    {{ block.settings.image2 | img_url: "100x" | img_tag }}
+                  </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+            {% if block.type == 'block-3' %}
+              <div class="cs-logo-col">
+                  <div class="cs-logo-box">
+                    {{ block.settings.image4 | img_url: "100x" | img_tag }}
+                  </div>
+                  <div class="cs-logo-box">
+                    {{ block.settings.image5 | img_url: "100x" | img_tag }}
+                  </div>
+                  <div class="cs-logo-box">
+                    {{ block.settings.image6 | img_url: "100x" | img_tag }}
+                  </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+            {% if block.type == 'block-4' %}
+              <div class="cs-logo-col">
+                  <div class="cs-logo-box">
+                    {{ block.settings.image4 | img_url: "100x" | img_tag }}
+                  </div>
+                  <div class="cs-logo-box">
+                    {{ block.settings.image5 | img_url: "100x" | img_tag }}
+                  </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+            {% if block.type == 'block-5' %}
+              <div class="cs-logo-col">
+                  <div class="cs-logo-box">
+                    {{ block.settings.image | img_url: "100x" | img_tag }}
+                  </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+         
+          </div>
+      </div> 
+    </section> 
+
+
+{% schema %}
+{
+  
+  "name": "client section",
+  "settings": [
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading"
+    },
+    {
+      "type":"textarea",
+      "id":"discription",
+      "label":"discription"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "block-1",
+      "name": "add image1",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "block-2",
+      "name": "add image2",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "block-3",
+      "name": "add image3",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image6",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "block-4",
+      "name": "add image4",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "block-5",
+      "name": "add image5",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

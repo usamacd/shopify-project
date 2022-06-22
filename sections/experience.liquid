@@ -1,0 +1,61 @@
+ <section class="ap-team-char page-sec" style="background-image: url('{{ section.settings.bg-image | image_url }}');">
+        <header class="page-sec-header ap-team-char-h">
+            {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading }}</h2>
+          {% endif %}
+        </header>
+        <div class="container-fluid mw-1200">
+            <div class="row align-items-center">
+              {% for block in section.blocks %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+                    <div class="char-card">
+                      {% if block.settings.icon != blank %}
+                      <i class="es-card-icon text-white {{ block.settings.icon }}"></i>
+                      {% endif %}
+                        {% if block.settings.discription != blank %}
+                        <p>{{ block.settings.discription }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+ {% schema %}
+  {
+    "name": "experience",
+    "settings": [
+      {
+          "type":"image_picker",
+          "id":"bg-image",
+          "label":"bg imag"
+      },
+      {
+          "type":"text",
+          "id":"heading",
+          "label":"heading"
+      }
+    ],
+ "blocks":[
+    {
+      "type": "block",
+      "name": "Add card",
+      "settings": [
+          {
+              "type":"text",
+              "id":"icon",
+              "label":"icon"
+          },
+          {
+              "type":"textarea",
+              "id":"discription",
+              "label":"discription"
+          }
+      ]
+    }
+  
+  ]
+  }
+  {% endschema %}

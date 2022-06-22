@@ -1,0 +1,86 @@
+<section class="ap-promise-sec page-sec">
+    <header class="page-sec-header">
+        {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }} </h2>
+        {% endif %}
+        {% if section.settings.discription != blank %}
+            <p>{{ section.settings.discription }}</p>
+        {% endif %}
+    </header>
+    <div class="container-fluid mw-1200">
+        <div class="row">
+            {% for block in section.blocks %}
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="ap-prom-box">
+                    <div class="ap-prom-box-img">
+                        {% if block.settings.icon != blank %}
+                        <i style="color: {{ block.settings.user_color }}" class="ap-empathy {{ block.settings.icon }}"></i>
+                        {% endif %}
+                    </div>
+                    {% if block.settings.heading != blank %}
+                        <h4 style="color: {{ block.settings.heading_color }}">{{ block.settings.heading }}</h4>
+                    {% endif %}
+                    {% if block.settings.discription != blank %}
+                        <p>{{ block.settings.discription }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "our promise",
+    "settings": [
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add card",
+      "settings": [
+        {
+            "type":"text",
+            "id":"icon",
+            "label":"icon"
+        },
+        {
+            "type": "color",
+            "id": "user_color",
+            "label": "icon Color",
+            "default": "#000"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "heading Color",
+            "default": "#000"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+      ] 
+    }
+
+  ]
+  }
+{% endschema %}

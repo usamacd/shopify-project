@@ -1,0 +1,573 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?y7y83v');
+  src:  url('icomoon.eot?y7y83v#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?y7y83v') format('truetype'),
+    url('icomoon.woff?y7y83v') format('woff'),
+    url('icomoon.svg?y7y83v#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-map-marker-alt-solid:before {
+  content: "\e9b3";
+}
+.icon-phone-alt-solid:before {
+  content: "\e9b4";
+}
+.icon-envelope-solid:before {
+  content: "\e9b5";
+}
+.icon-bars-solid:before {
+  content: "\e9b1";
+}
+.icon-times-solid:before {
+  content: "\e9b2";
+}
+.icon-external-link-alt-solid:before {
+  content: "\e9b0";
+}
+.icon-check-solid:before {
+  content: "\e9af";
+}
+.icon-check-circle-solid:before {
+  content: "\e9ae";
+}
+.icon-long-arrow-alt-right-solid:before {
+  content: "\e9ad";
+}
+.icon-angle-right-solid:before {
+  content: "\e9ac";
+}
+.icon-right:before {
+  content: "\e9ab";
+}
+.icon-facebook:before {
+  content: "\e9a8";
+}
+.icon-twitter:before {
+  content: "\e9a9";
+}
+.icon-pinterest:before {
+  content: "\e9aa";
+}
+.icon-icon-rewords:before {
+  content: "\e9a3";
+}
+.icon-icon-empowerment:before {
+  content: "\e9a6";
+}
+.icon-mental-physical-2:before {
+  content: "\e9a7";
+}
+.icon-equality:before {
+  content: "\e9a2";
+}
+.icon-trainning:before {
+  content: "\e9a4";
+}
+.icon-growth:before {
+  content: "\e9a5";
+}
+.icon-icon-high-performance-value:before {
+  content: "\e99f";
+}
+.icon-icon-empathy-value:before {
+  content: "\e9a0";
+}
+.icon-icon-togather-value:before {
+  content: "\e9a1";
+}
+.icon-Arrow-2:before {
+  content: "\e99e";
+}
+.icon-Pause:before {
+  content: "\e99d";
+}
+.icon-Fintech:before {
+  content: "\e99a";
+}
+.icon-Edtech:before {
+  content: "\e99b";
+}
+.icon-Media:before {
+  content: "\e99c";
+}
+.icon-cd-doctor-app-2:before {
+  content: "\e998";
+}
+.icon-cd-patient-app:before {
+  content: "\e999";
+}
+.icon-Shopify-Development-3:before {
+  content: "\e98e";
+}
+.icon-Shopify-Development-2:before {
+  content: "\e98f";
+}
+.icon-Shopify-Development-1:before {
+  content: "\e990";
+}
+.icon-Prototyping--Design-4:before {
+  content: "\e991";
+}
+.icon-Prototyping--Design-2:before {
+  content: "\e992";
+}
+.icon-Prototyping--Design-1:before {
+  content: "\e993";
+}
+.icon-Migration-and-Launch:before {
+  content: "\e994";
+}
+.icon-Discovery-3:before {
+  content: "\e995";
+}
+.icon-Discovery-2:before {
+  content: "\e996";
+}
+.icon-Discovery-1:before {
+  content: "\e997";
+}
+.icon-Build--Iterate:before {
+  content: "\e98b";
+}
+.icon-Discovery:before {
+  content: "\e98c";
+}
+.icon-Wireframes:before {
+  content: "\e98d";
+}
+.icon-cd-shopifyplus:before {
+  content: "\e98a";
+}
+.icon-cd-about-high-performance:before {
+  content: "\e988";
+}
+.icon-cd-about-empthy:before {
+  content: "\e989";
+}
+.icon-cd-banking-finance:before {
+  content: "\e981";
+}
+.icon-cd-energy-utilities:before {
+  content: "\e982";
+}
+.icon-cd-healthcare1:before {
+  content: "\e983";
+}
+.icon-cd-insurance:before {
+  content: "\e984";
+}
+.icon-cd-manufacturing:before {
+  content: "\e985";
+}
+.icon-cd-retail:before {
+  content: "\e986";
+}
+.icon-real-estate:before {
+  content: "\e987";
+}
+.icon-cd-reinforcement-learning:before {
+  content: "\e980";
+}
+.icon-cd-branding:before {
+  content: "\e97a";
+}
+.icon-cd-migration:before {
+  content: "\e97b";
+}
+.icon-cd-custom-development:before {
+  content: "\e97c";
+}
+.icon-cd-conselting:before {
+  content: "\e97d";
+}
+.icon-sharepoint-logo:before {
+  content: "\e97e";
+}
+.icon-sharepoint-mobile-apps:before {
+  content: "\e97f";
+}
+.icon-cd-performance-avalibility:before {
+  content: "\e979";
+}
+.icon-et-machine-learning:before {
+  content: "\e978";
+}
+.icon-et-comunity:before {
+  content: "\e973";
+}
+.icon-et-big-data:before {
+  content: "\e974";
+}
+.icon-et-artifical-technology:before {
+  content: "\e975";
+}
+.icon-et-blockchain:before {
+  content: "\e976";
+}
+.icon-et-virtual-reality:before {
+  content: "\e977";
+}
+.icon-cd-architecture-design:before {
+  content: "\e96e";
+}
+.icon-cd-data-migration:before {
+  content: "\e96f";
+}
+.icon-cd-model-development:before {
+  content: "\e970";
+}
+.icon-cd-platform-implementation:before {
+  content: "\e971";
+}
+.icon-cd-requirement-analysis-2:before {
+  content: "\e972";
+}
+.icon-cd-te-client:before {
+  content: "\e96d";
+}
+.icon-cd-visual-prototype-2:before {
+  content: "\e96a";
+}
+.icon-cd-final-presentation:before {
+  content: "\e96b";
+}
+.icon-cd-event-storming-2:before {
+  content: "\e96c";
+}
+.icon-cd-mobile-app-development1:before {
+  content: "\e967";
+}
+.icon-cd-startups:before {
+  content: "\e968";
+}
+.icon-cd-smbs:before {
+  content: "\e969";
+}
+.icon-cd-smart-home:before {
+  content: "\e95f";
+}
+.icon-cd-wearable:before {
+  content: "\e960";
+}
+.icon-cd-healthcare:before {
+  content: "\e961";
+}
+.icon-cd-smart-cars:before {
+  content: "\e962";
+}
+.icon-cd-sensors:before {
+  content: "\e963";
+}
+.icon-cd-rfid:before {
+  content: "\e964";
+}
+.icon-cd-beacons:before {
+  content: "\e965";
+}
+.icon-cd-devices:before {
+  content: "\e966";
+}
+.icon-cd-shopify-development-plus:before {
+  content: "\e95e";
+}
+.icon-cd-checktick:before {
+  content: "\e95d";
+}
+.icon-cd-worry-free-software:before {
+  content: "\e950";
+}
+.icon-cd-web-development:before {
+  content: "\e951";
+}
+.icon-cd-web-app-mobile-development:before {
+  content: "\e952";
+}
+.icon-cd-ux-design:before {
+  content: "\e953";
+}
+.icon-cd-strong-commitment-delivery:before {
+  content: "\e954";
+}
+.icon-cd-mobile-development:before {
+  content: "\e955";
+}
+.icon-cd-fixed-price1:before {
+  content: "\e956";
+}
+.icon-cd-fair-aggrements:before {
+  content: "\e957";
+}
+.icon-cd-enterprise-solution:before {
+  content: "\e958";
+}
+.icon-cd-dedicated-teams:before {
+  content: "\e959";
+}
+.icon-cd-dedicated:before {
+  content: "\e95a";
+}
+.icon-cd-custom-software-dev:before {
+  content: "\e95b";
+}
+.icon-cd-complete-transprancy:before {
+  content: "\e95c";
+}
+.icon-cd-agile-discovery-workshop:before {
+  content: "\e94f";
+}
+.icon-cd-workflow-management:before {
+  content: "\e949";
+}
+.icon-cd-requirement-analysis:before {
+  content: "\e94a";
+}
+.icon-cd-project-potfolio-management:before {
+  content: "\e94b";
+}
+.icon-cd-development-implementation:before {
+  content: "\e94c";
+}
+.icon-cd-data-flow-management:before {
+  content: "\e94d";
+}
+.icon-cd-case-management:before {
+  content: "\e94e";
+}
+.icon-cd-web-mobile-app-development:before {
+  content: "\e927";
+}
+.icon-cd-watch:before {
+  content: "\e938";
+}
+.icon-cd-user-experience:before {
+  content: "\e939";
+}
+.icon-cd-transparency:before {
+  content: "\e93a";
+}
+.icon-cd-salesforce:before {
+  content: "\e93b";
+}
+.icon-cd-protection:before {
+  content: "\e93c";
+}
+.icon-cd-project-manage:before {
+  content: "\e93d";
+}
+.icon-cd-phone1:before {
+  content: "\e93e";
+}
+.icon-cd-icon-bulb:before {
+  content: "\e93f";
+}
+.icon-cd-fixed-price:before {
+  content: "\e940";
+}
+.icon-cd-enterprise-solutions:before {
+  content: "\e941";
+}
+.icon-cd-dollar-circle:before {
+  content: "\e942";
+}
+.icon-cd-dollar-calc:before {
+  content: "\e943";
+}
+.icon-cd-discovery:before {
+  content: "\e944";
+}
+.icon-cd-delivery:before {
+  content: "\e945";
+}
+.icon-cd-dedicated-team:before {
+  content: "\e946";
+}
+.icon-cd-data-science:before {
+  content: "\e947";
+}
+.icon-cd-custom-software-development:before {
+  content: "\e948";
+}
+.icon-cd-visual-prototype:before {
+  content: "\e931";
+}
+.icon-cd-lower-your-costs:before {
+  content: "\e932";
+}
+.icon-cd-introductory-call:before {
+  content: "\e935";
+}
+.icon-cd-event-storming:before {
+  content: "\e936";
+}
+.icon-cd-connect-all-business-ecosystem:before {
+  content: "\e937";
+}
+.icon-cd-unity-operation:before {
+  content: "\e925";
+}
+.icon-cd-secure-connectivity:before {
+  content: "\e926";
+}
+.icon-cd-integration1:before {
+  content: "\e928";
+}
+.icon-cd-indoor-positioning-service:before {
+  content: "\e929";
+}
+.icon-cd-flexiable-work-term:before {
+  content: "\e92a";
+}
+.icon-cd-devops:before {
+  content: "\e92b";
+}
+.icon-cd-deliver-intelligent-ux:before {
+  content: "\e92c";
+}
+.icon-cd-custom-software-model-development-2:before {
+  content: "\e92d";
+}
+.icon-cd-connected-vehicle-telematic:before {
+  content: "\e92e";
+}
+.icon-cd-connect-business-ecosystem:before {
+  content: "\e92f";
+}
+.icon-cd-centralise-your-process:before {
+  content: "\e930";
+}
+.icon-cd-solution-lifecycle-mangement:before {
+  content: "\e920";
+}
+.icon-cd-on-the-edge:before {
+  content: "\e921";
+}
+.icon-cd-driven-big-data-solution:before {
+  content: "\e922";
+}
+.icon-cd-devop:before {
+  content: "\e923";
+}
+.icon-cd-custom-software-model-development:before {
+  content: "\e924";
+}
+.icon-Group-1351:before {
+  content: "\e91f";
+}
+.icon-cd-top-shopify-developers:before {
+  content: "\e91d";
+}
+.icon-cd-theme-customization:before {
+  content: "\e91e";
+}
+.icon-cd-maintenance-support:before {
+  content: "\e933";
+}
+.icon-cd-integration-third-parties:before {
+  content: "\e934";
+}
+.icon-cd-unified-commerence:before {
+  content: "\e914";
+}
+.icon-cd-support:before {
+  content: "\e915";
+}
+.icon-cd-salesforce-mobile-app-development:before {
+  content: "\e916";
+}
+.icon-cd-platform-services:before {
+  content: "\e917";
+}
+.icon-cd-marketing-automation:before {
+  content: "\e918";
+}
+.icon-cd-integration:before {
+  content: "\e919";
+}
+.icon-cd-forcecom:before {
+  content: "\e91a";
+}
+.icon-cd-field-service-lightining:before {
+  content: "\e91b";
+}
+.icon-cd-app-exchange:before {
+  content: "\e91c";
+}
+.icon-cd-ideate:before {
+  content: "\e910";
+}
+.icon-cd-develop:before {
+  content: "\e911";
+}
+.icon-cd-design:before {
+  content: "\e912";
+}
+.icon-cd-deploy:before {
+  content: "\e913";
+}
+.icon-cd-rescue-mission:before {
+  content: "\e90b";
+}
+.icon-cd-massive-customise-web-app:before {
+  content: "\e90c";
+}
+.icon-cd-check-mark:before {
+  content: "\e90d";
+}
+.icon-cd-build-minimum-viable-product:before {
+  content: "\e90e";
+}
+.icon-cd-amazing-ui-ux-design:before {
+  content: "\e90f";
+}
+.icon-cd-sales-force-development:before {
+  content: "\e90a";
+}
+.icon-cd-web-enterprise-portal:before {
+  content: "\e903";
+}
+.icon-cd-business-process-automation:before {
+  content: "\e904";
+}
+.icon-cd-consolidation-multiple-application:before {
+  content: "\e905";
+}
+.icon-cd-custom-enterprise-software-development:before {
+  content: "\e906";
+}
+.icon-cd-enterprise-mobility:before {
+  content: "\e907";
+}
+.icon-cd-modernizing-legacy-applications:before {
+  content: "\e908";
+}
+.icon-cd-sales-force:before {
+  content: "\e909";
+}
+.icon-cd-location:before {
+  content: "\e900";
+}
+.icon-cd-mail:before {
+  content: "\e901";
+}
+.icon-cd-phone:before {
+  content: "\e902";
+}

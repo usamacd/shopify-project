@@ -1,0 +1,151 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if section.settings.enable_quick_add -%}
+  <link rel="stylesheet" href="{{ 'quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign products_to_display = section.settings.collection.all_products_count
+
+  if section.settings.collection.all_products_count > section.settings.products_to_show
+    assign products_to_display = section.settings.products_to_show
+    assign more_in_collection = true
+  endif
+
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and products_to_display > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+    assign show_desktop_slider = true
+  endif
+-%}
+<section class="startups-sec page-sec">
+  <header class="page-sec-header">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.discription != blank %}
+      <p>{{ section.settings.discription }}</p>
+      {% endif %}
+  </header>
+<div class="container-fluid  mw-1200">
+  {% for block in section.blocks %}
+  <div class="row text-center align-items-center ">
+      <div class="col-md-2 col-sm-6 my-3 col-6">
+        {% if block.settings.galleryimage1 != blank %}
+          {{ block.settings.galleryimage1 | img_url: "100x" | img_tag }}
+        {% endif %}
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 my-3">
+        {% if block.settings.galleryimage2 != blank %}
+          {{ block.settings.galleryimage2 | img_url: "100x" | img_tag }}
+        {% endif %}
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 my-3">
+        {% if block.settings.galleryimage3 != blank %}
+          {{ block.settings.galleryimage3 | img_url: "100x" | img_tag }}
+        {% endif %}
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 my-3">
+        {% if block.settings.galleryimage4 != blank %}
+          {{ block.settings.galleryimage4 | img_url: "100x" | img_tag }}
+        {% endif %}
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 my-3">
+        {% if block.settings.galleryimage5 != blank %}
+          {{ block.settings.galleryimage5 | img_url: "100x" | img_tag }}
+        {% endif %}
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 my-3" >
+        {% if block.settings.galleryimage6 != blank %}
+          {{ block.settings.galleryimage6 | img_url: "100x" | img_tag }}
+        {% endif %}
+        
+      </div>
+  </div>
+{% endfor %}
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Add section",
+  "settings": [
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading"
+     },
+     {
+      "type":"textarea",
+      "id":"discription",
+      "label":"discription"
+    }
+  ],
+
+  "blocks":[
+    {
+      "type": "gallery",
+      "name": "Add gallery",
+      "settings": [
+        {
+            "type":"image_picker",
+            "id":"galleryimage1",
+            "label":"select image"
+        },
+        {
+          "type":"image_picker",
+          "id":"galleryimage2",
+          "label":"select image"
+      },
+        {
+          "type":"image_picker",
+          "id":"galleryimage3",
+          "label":"select image"
+      },
+        {
+          "type":"image_picker",
+          "id":"galleryimage4",
+          "label":"select image"
+      },
+        {
+          "type":"image_picker",
+          "id":"galleryimage5",
+          "label":"select image"
+      },
+        {
+          "type":"image_picker",
+          "id":"galleryimage6",
+          "label":"select image"
+        }
+      ]
+    }
+  
+  ]
+  }
+{% endschema %}

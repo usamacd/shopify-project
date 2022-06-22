@@ -1,0 +1,136 @@
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+-%}
+
+<section class="page-sec engage-models-sec pt-0">
+  <header class="page-sec-header">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.discription != blank %}
+      <p>{{ section.settings.discription }}</p>
+      {% endif %}
+  </header>
+  <div class="container-fluid mw-1200">
+      <div class="row">
+        {% for block in section.blocks %}
+          <div class="col-md-6">
+              <div class="em-card">
+                  <i class="cd-icon icon-cd-fixed-price"></i>
+                  {% if block.settings.heading != blank %}
+                    <h3>{{ block.settings.heading }}</h3>
+                  {% endif %}
+                  {% if block.settings.discription != blank %}
+                    <p>{{ block.settings.discription }}</p>
+                    {% endif %}
+                  <ul>
+                      <li>123456.</li>
+                      <li>67Visualise your end product without spending money on development.</li>
+                  </ul>
+                  {% if block.settings.para != blank %}
+                    <p>{{ block.settings.para }}</p>
+                    {% endif %}
+                    {% if block.settings.url != blank %}
+                  <a href="{{ block.settings.url }}" class="btn btn-learn-more">{{ block.settings.btn-title }}</a>
+                {% endif %}
+              </div>
+          </div>
+
+          {% comment %} <div class="col-md-6">
+              <div class="em-card em-dedicated-card">
+                  <i class="cd-icon icon-cd-dedicated-teams"></i>
+                  <h3>Dedicated Teams</h3>
+                  <p>High-performing, on-demand teams of engineers.</p>
+                  <ul>
+                      <li>Augment your existing in-house / external team.</li>
+                      <li>Develop a product - working in a true agile fashion.</li>
+                      <li>Maintain & support your existing product.</li>
+                  </ul>
+                  <p>Highly effective onboarding & execution process.</p>
+                  <a href="dedicated-development-team.php" class="btn btn-learn-more">Learn More</a>
+              </div>
+          </div> {% endcomment %}
+        {% endfor %}
+      </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Add section",
+  "settings": [
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading"
+     },
+     {
+      "type":"textarea",
+      "id":"discription",
+      "label":"discription"
+    }
+  ],
+
+  "blocks":[
+    {
+      "type": "block-1",
+      "name": "Add Card",
+      "settings": [
+        {
+            "type":"image_picker",
+            "id":"myimage",
+            "label":"select image"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        },
+        {
+          "type":"textarea",
+          "id":"para",
+          "label":"para"
+      },
+        {
+          "type":"text",
+          "id":"btn_title",
+          "label":"Heading"
+       },
+        {
+          "type":"url",
+          "id":"btn_link",
+          "label":"Read More link"
+      }
+      ]
+    }
+  
+  ]
+  }
+{% endschema %}

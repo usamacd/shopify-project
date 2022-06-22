@@ -1,0 +1,99 @@
+<section class="page-sec expertise-sec">
+    <header class="page-sec-header">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.discription != blank %}
+        <p>{{ section.settings.discription }}</p>
+        {% endif %}
+    </header>
+    <div class="container-fluid mw-1200">
+        <div class="row">
+            {% for block in section.blocks %}
+            <div class="col-sm-6 col-lg-4">
+                <div class="es-card">
+                    {% if block.settings.icon_class %}
+                    <i class="es-card-icon {{ block.settings.icon_class }}"></i>
+                    {% endif %}
+                    {% if block.settings.heading != blank %}
+                    <h3>{{ block.settings.heading }}</h3>
+                    {% endif %}
+                    {% if block.settings.discription != blank %}
+                    <p>{{ block.settings.discription }}</p>
+                    {% endif %}
+                    {% if block.settings.button_text != blank %}
+                    <span class="es-card-more">{{ block.settings.button_text }} <i class="{{ block.settings.button_icon }}"></i></span>
+                    {% endif %}
+                    {% if block.settings.button_link != blank %}
+                    <a href="{{ block.settings.button_link }}" class="stretched-link"></a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+  </section>
+  
+  {% schema %}
+  {
+    "name": "expertise section",
+    "max_blocks": 6,
+    "settings": [
+      {
+          "type":"text",
+          "id":"heading",
+          "label":"Heading"
+      },
+      {
+          "type":"textarea",
+          "id":"discription",
+          "label":"discription"
+      }
+    ],
+  
+    "blocks":[
+      {
+        "type": "block",
+        "name": "Add card",
+        "settings": [
+            {
+                "type":"text",
+                "id":"icon_class",
+                "label":"icon"
+            },
+            {
+                "type":"text",
+                "id":"heading",
+                "label":"Heading"
+            },
+            {
+                "type":"textarea",
+                "id":"discription",
+                "label":"discription"
+            },
+            {
+                "type":"text",
+                "id":"button_text",
+                "label":"button text"
+            },
+            {
+                "type":"text",
+                "id":"button_icon",
+                "label":"button icon"
+            },
+            {
+                "type":"url",
+                "id":"button_link",
+                "label":"Read More link"
+            }
+        ]
+      }
+    
+    ],
+"presets": [
+      {
+        "name": "expertise"
+      }
+    ]
+    }
+  {% endschema %}

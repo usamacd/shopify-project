@@ -1,0 +1,76 @@
+<section class="page-sec sec-style-1 why-work-section ">
+    <header class="page-sec-header">
+        {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+          {% endif %}
+          {% if section.settings.discription != blank %}
+            <p>{{ section.settings.discription }}</p>
+            {% endif %}
+    </header>
+    <div class="container-fluid mw-1200">
+        <div class="row">
+             {% for block in section.blocks %}
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="ss1-col">
+                    <div class="ss1-col-icon">
+                        {% if block.settings.icon_class != blank %}
+                        <i class="{{ block.settings.icon_class }}"></i>
+                        {% endif %}
+                    </div>
+                    {% if block.settings.heading != blank %}
+                    <h5 data-mh="ww-cd-col-head">{{ block.settings.heading }}</h5>
+                    {% endif %}
+                    {% if block.settings.discription != blank %}
+                    <p>{{ block.settings.discription }}</p>
+                {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "why work section",
+  "max_blocks": 4,
+  "settings": [
+    {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+    },
+    {
+        "type":"textarea",
+        "id":"discription",
+        "label":"discription"
+    }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add card",
+      "settings": [
+          {
+            "type":"text",
+            "id":"icon_class",
+            "label":"icon"
+          },
+          {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+          },
+          {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+      ]
+    }
+  
+  ]
+  }
+{% endschema %}

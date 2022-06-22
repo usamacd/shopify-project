@@ -1,0 +1,36 @@
+{
+    "sections": {
+      "hero_section": {
+        "type": "hero-section",
+        "settings": {
+        }
+      },
+      "development_strategy": {
+        "type": "development-strategy",
+        "settings": {
+        }
+      },
+      "team_work": {
+        "type": "team-work",
+        "settings": {
+        }
+      },
+      "experience_section": {
+        "type": "experience",
+        "settings": {
+        }
+      },
+      "our_promise": {
+        "type": "our-promise",
+        "settings": {
+        }
+      }
+    },
+    "order": [
+      "hero_section",
+      "development_strategy",
+      "team_work",
+      "experience_section",
+      "our_promise"
+    ]
+  }

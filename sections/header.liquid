@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'cd-site.css' | asset_url }}" >
+<link rel="stylesheet" href="{{ 'slick.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<script src="{{ 'jquery-3.6.0.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
+
+
+
+{%- if settings.cart_type == "drawer" -%}
+  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+  <header class="site-header test11">
+      <div class="container-fluid mw-1200">
+          <div class="site-logo">
+            {% if section.settings.logo != blank %}
+            <a href="{{ routes.root_url }}">
+              <img src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}" 
+                loading="lazy"
+                width="{{ section.settings.logo.width }}"
+                height="{{ section.settings.logo.height }}"
+              />
+            </a>
+              {% endif %}
+          </div>
+          <div class="site-nav-wrap">
+              <div class="mob-nav-close mobNavClose"><i class="fa fa-times"></i></div>
+              <div class="site-nav">
+                <ul>
+                  {% for link in linklists.main-menu.links %}
+                    <li><a href= "{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                  </ul>
+                  {% comment %} <ul>
+                    
+                      <li class="has-submenu">
+                          <a href="#">Services</a>
+                      </li>
+                      <li><a href="#">Company</a></li>
+                      <li><a href="#">Work</a></li>
+                      <li><a href="#">Blog</a></li>
+                  </ul> {% endcomment %}
+              </div>
+          </div>
+          <div class="mob-nav-bg"></div>
+          <div class="header-actions">
+            {% if section.settings.phone != blank %}
+              <a href="{{ section.settings.phone_link }}" class="ha-phone"><i class="{{ section.settings.icon }}"></i>{{ section.settings.phone }}</a>
+            {% endif %}
+            {% if section.settings.button_heading != blank %}
+              <a href="{{ section.settings.button_link }}" class="btn-lets-talk">{{ section.settings.button_heading }}</a>
+            {% endif %}
+              <a href="" class="mob-nav-toggle mobNavToggle"><i class="fa fa-bars"></i></a>
+          </div>
+      </div>
+  </header>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+    
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+
+{
+  "name": "header.name",
+  "class": "section-header",
+  "settings": [
+   
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "logo picker"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "main menu"
+    },
+    
+    {
+      "type":"text",
+      "id":"icon",
+      "label": "icon"
+    },
+    {
+      "type":"text",
+      "id":"phone",
+      "label": "Phone no"
+    },
+	{
+      "type": "url",
+      "id": "phone_link",
+      "label": "phone_link"
+    },
+    {
+      "type":"text",
+      "id":"button_heading",
+      "label": "button_heading"
+    },
+    {
+      "type":"url",
+      "id":"button_link",
+      "label": "button_link"
+    }
+
+  ]
+}
+{% endschema %}

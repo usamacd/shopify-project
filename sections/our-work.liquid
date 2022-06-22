@@ -1,0 +1,110 @@
+
+
+<script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+<section class="page-sec ow-card-wrap pb-5 pt-0">
+    <header class="page-sec-header">
+        {% if section.settings.heading != blank %}
+            <h1>{{ section.settings.heading }}</h1>
+          {% endif %}
+          {% if section.settings.discription != blank %}
+            <p>{{ section.settings.discription }}</p>
+          {% endif %}
+    </header>
+    <div class="our-work-portfolio slider-slick">
+        {% for block in section.blocks %}
+        <div class="pb-xl-5">
+            <div class="ow-card" style="background:{{ block.settings.custom_background_color }}">
+                <div class="owc-content">
+                    {% if block.settings.slider_logo != blank %}
+                    {{ block.settings.slider_logo | img_url: "100x" | img_tag }}
+                     {% endif %}
+                    {% if block.settings.slider_heading != blank %}
+                    <h3>{{ block.settings.slider_heading }}</h3>
+                    {% endif %}
+                    {% if block.settings.slider_paragraph != blank %}
+                    <p>{{ block.settings.slider_paragraph }}</p>
+                    {% endif %}
+                    {% if block.settings.button_heading != blank %}
+                    <a href="{{ block.settings.slider_btn_link }}" class="learn-more">{{ block.settings.button_heading }}<i class="{{ block.settings.button_icon }} m-2"></i></a>
+                    {% endif %} 
+                </div>
+                <div class="owc-thumbnail">
+                    {% if block.settings.slider_image != blank %}
+                        {{ block.settings.slider_image | img_url: "600x" | img_tag }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "work section",
+    "settings": [
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        },
+        {
+            "type":"textarea",
+            "id":"discription",
+            "label":"discription"
+        }
+  ],
+
+  "blocks":[
+    {
+      "type": "block",
+      "name": "Add slider",
+      "settings": [
+        {
+            "type": "color",
+            "id": "custom_background_color",
+            "label": "Background color",
+            "default": "#ccc"
+        },
+        {
+            "type":"image_picker",
+            "id":"slider_logo",
+            "label":"slider logo"
+        },
+        {
+            "type":"text",
+            "id":"slider_heading",
+            "label":"Slider Heading"
+        },
+        {
+            "type":"textarea",
+            "id":"slider_paragraph",
+            "label":"Slider paragraph"
+        },
+        {
+            "type":"url",
+            "id":"slider_btn_link",
+            "label":"Slider btn link"
+        },
+        {
+            "type":"text",
+            "id":"button_heading",
+            "label":"Button Heading"
+        },
+{
+            "type":"text",
+            "id":"button_icon",
+            "label":"Button icon"
+        },
+        {
+            "type":"image_picker",
+            "id":"slider_image",
+            "label":"slider image"
+        }
+      ] 
+    }
+
+  ]
+  }
+{% endschema %}
