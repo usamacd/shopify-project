@@ -1,123 +1,207 @@
+<div class="container-fluid mw-1200 mt-5 mb-5 testClass2">
+	<div class="row">
+		<div class="col-md-8 col-lg-7">
+			
+					<div class="post-card img-zoom">
+						<a href="<?php the_permalink(); ?>" class="embed-responsive embed-responsive-16by9 bg-light">
+							<?php if (has_post_thumbnail()) : ?>
+								<img src="<?php echo the_post_thumbnail_url(); ?>" alt="">
+							<?php endif; ?>
+						</a>
+						<div class="post-card-desc">
+							<div class="d-flex">
+								<?php
+								$numItems = count(get_the_category());
+								$i = 0;
+								foreach ((get_the_category()) as $category) {
+									$category_name = $category->cat_name;
+									$category_id = get_cat_ID($category_name);
+									$category_link = get_category_link($category_id);
+									if (++$i !== $numItems) {
+										$category_name = $category_name . ", &nbsp";
+									}
 
-{%- if article and article != empty -%}
-  {%- liquid
-    assign ratio = 1
-    if media_aspect_ratio != nil
-      assign ratio = media_aspect_ratio
-    endif
-  -%}
-  <div class="card-wrapper underline-links-hover">
-    {% comment %} <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
-    <div class="card article-card
-      card--{{ settings.card_style }}
-      {% if media_height and media_height != 'adapt' %} article-card__image--{{ media_height }}{% endif %}
-      {% if article.image and show_image %} card--media{% else %} card--text{% endif %}
-      {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
-      {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
-    >
-      <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %}{% if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-        {%- if show_image == true and article.image -%}
-          <div class="article-card__image-wrapper card__media">
-            <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
-              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-              <img
-                srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
-                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
-                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
-                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
-                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
-                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
-                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
-                src="{{ article.image.src | image_url: width: 533 }}"
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
-                alt="{{ article.image.src.alt | escape }}"
-                class="motion-reduce"
-                {% unless lazy_load == false %}loading="lazy"{% endunless %}
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-              >
-              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-            </div>
-          </div>
-        {%- endif -%}
-        <div class="card__content">        
-          <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              <a href="{{ article.url }}" class="full-unstyled-link">
-                {{ article.title | truncate: 50 | escape }}
-              </a>
-            </h3>
-            <div class="article-card__info caption-with-letter-spacing h5">
-              {%- if show_date -%}
-                <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-              {%- endif -%}
-              {%- if show_author -%}
-                <span>{{ article.author }}</span>
-              {%- endif -%}
-            </div>
-            {%- if show_excerpt -%}
-              {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-                <p class="article-card__excerpt rte-width">
-                  {%- if article.excerpt.size > 0 -%}
-                    {{ article.excerpt | strip_html | truncatewords: 30 }}
-                  {%- else -%}
-                    {{ article.content | strip_html | truncatewords: 30 }}
-                  {%- endif -%}
-                </p>
-              {%- endif -%}
-              <div class="article-card__footer">
-                {%- if article.comments_count > 0 and blog.comments_enabled? -%}
-                  <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-          </div>
-          {%- if show_badge -%}
-            <div class="card__badge {{ settings.badge_position }}">
-              <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
-            </div>
-          {%- endif -%}
-        </div>
-      </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-            <a href="{{ article.url }}" class="full-unstyled-link">
-              {{ article.title | truncate: 50 | escape }}
-            </a>
-          </h3>
-          <div class="article-card__info caption-with-letter-spacing h5">
-            {%- if show_date -%}
-              <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-            {%- endif -%}
-            {%- if show_author -%}
-              <span>{{ article.author }}</span>
-            {%- endif -%}
-          </div>
-          {%- if show_excerpt -%}
-            {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-              <p class="article-card__excerpt rte-width">
-                {%- if article.excerpt.size > 0 -%}
-                  {{ article.excerpt | strip_html | truncatewords: 30 }}
-                {%- else -%}
-                  {{ article.content | strip_html | truncatewords: 30 }}
-                {%- endif -%}
-              </p>
-            {%- endif -%}
-            <div class="article-card__footer">
-              {%- if article.comments_count > 0 and blog.comments_enabled? -%}
-                <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-        </div>
-        {%- if show_badge -%}
-          <div class="card__badge {{ settings.badge_position }}">
-            <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
-          </div>
-        {%- endif -%}  
-      </div>
-    </div>
-  </div>
-{%- endif -%}
+									echo "<a href='" . $category_link . "' class='blog-post-category-link'><h6 class='mb-0'>" . $category_name . "</h6></a>";
+								}
+								?>
+
+							</div>
+							<h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
+							<p><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
+							<div class="">
+								<a href="<?php the_permalink(); ?>" class="readmore">Read Full </a>
+							</div>
+						</div>
+					</div>
+			<?php endwhile;
+			}
+			wp_reset_postdata(); ?>
+		</div>
+		<div class="col-md-4 col-lg-5">
+			<div class="popular-posts-list">
+				<h5>Popular</h5>
+				<ul>
+					<?php
+					$query = array(
+						'posts_per_page' => 4,
+						'post_type'      => 'post',
+						//'category_name'  => 'header-slider-post',
+						//'orderby'        => 'date',
+						'order'          => 'DESC',
+						'offset' => 1, // excludes the first post in the query
+					);
+					$latest_post = new WP_Query($query);
+					if ($latest_post->have_posts()) { ?>
+
+						<?php while ($latest_post->have_posts()) : $latest_post->the_post(); ?>
+							<li>
+								<div class="ppl-card img-zoom">
+									<a href="" class="ppl-card-thumb embed-responsive embed-responsive-16by9 bg-light">
+										<?php if (has_post_thumbnail()) : ?>
+											<img src="<?php echo the_post_thumbnail_url(); ?>" alt="">
+										<?php endif; ?>
+									</a>
+									<div class="ppl-card-desc">
+										<div class="d-flex">
+											<?php
+											$numItems = count(get_the_category());
+											$i = 0;
+											foreach ((get_the_category()) as $category) {
+												$category_name = $category->cat_name;
+												$category_id = get_cat_ID($category_name);
+												$category_link = get_category_link($category_id);
+												if (++$i !== $numItems) {
+													$category_name = $category_name . ", &nbsp";
+												}
+												echo "<a href='" . $category_link . "' class='blog-post-category-link'><h6 class='mb-0'>" . $category_name . "</h6></a>";
+											}
+											?>
+
+
+										</div>
+										<h5><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h5>
+									</div>
+								</div>
+							</li>
+					<?php endwhile;
+					}
+					wp_reset_postdata(); ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<?php
+		$query = array(
+			'posts_per_page' => 2,
+			'post_type'      => 'post',
+			//'category_name'  => 'header-slider-post',
+			//'orderby'        => 'date',
+			'order'          => 'DESC',
+			'offset' => 5, // excludes the first post in the query
+		);
+		$bfh_post = new WP_Query($query);
+		if ($bfh_post->have_posts()) { ?>
+
+			<?php while ($bfh_post->have_posts()) : $bfh_post->the_post(); ?>
+				<div class="col-md-4">
+					<div class="post-card img-zoom">
+						<a href="<?php the_permalink(); ?>" class="embed-responsive embed-responsive-16by9 bg-light">
+							<?php if (has_post_thumbnail()) : ?>
+								<img src="<?php echo the_post_thumbnail_url(); ?>" alt="">
+							<?php endif; ?>
+						</a>
+						<div class="post-card-desc">
+							<div class="d-flex">
+								<?php
+								$numItems = count(get_the_category());
+								$i = 0;
+								foreach ((get_the_category()) as $category) {
+									$category_name = $category->cat_name;
+									$category_id = get_cat_ID($category_name);
+									$category_link = get_category_link($category_id);
+									if (++$i !== $numItems) {
+										$category_name = $category_name . ", &nbsp";
+									}
+
+									echo "<a href='" . $category_link . "' class='blog-post-category-link'><h6 class='mb-0'>" . $category_name . "</h6></a>";
+								}
+								?>
+
+							</div>
+							<h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
+							<p><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
+							<div class="text-right">
+								<a href="<?php the_permalink(); ?>" class="readmore">Read Full <i class="fa fa-long-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+		<?php endwhile;
+		}
+		wp_reset_postdata(); ?>
+		<div class="col-md-4">
+			<div class="consult-widget w-100">
+				<div>
+					<h4>Delivering software solutions beyond expectations</h4>
+					<h6>Have a project in mind?</h6>
+					<a href="#contactSection" class="btn-consult freeConsultation">Free Consultation</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<?php
+		$query = array(
+			'posts_per_page' => -1,
+			'post_type'      => 'post',
+			//'category_name'  => 'header-slider-post',
+			//'orderby'        => 'date',
+			'order'          => 'DESC',
+			'offset' => 7, // excludes the first post in the query
+		);
+		$bfh_post = new WP_Query($query);
+		if ($bfh_post->have_posts()) { ?>
+
+			<?php while ($bfh_post->have_posts()) : $bfh_post->the_post(); ?>
+				<div class="col-md-4">
+					<div class="post-card img-zoom">
+						<a href="<?php the_permalink(); ?>" class="embed-responsive embed-responsive-16by9 bg-light">
+							<?php if (has_post_thumbnail()) : ?>
+								<img src="<?php echo the_post_thumbnail_url(); ?>" alt="">
+							<?php endif; ?>
+						</a>
+						<div class="post-card-desc">
+						<div class="d-flex">
+								<?php
+								$numItems = count(get_the_category());
+								$i = 0;
+								foreach ((get_the_category()) as $category) {
+									$category_name = $category->cat_name;
+									$category_id = get_cat_ID($category_name);
+									$category_link = get_category_link($category_id);
+									if (++$i !== $numItems) {
+										$category_name = $category_name . ", &nbsp";
+									}
+
+									echo "<a href='" . $category_link . "' class='blog-post-category-link'><h6 class='mb-0'>" . $category_name . "</h6></a>";
+								}
+								?>
+
+							</div>
+							<h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
+							<p><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
+							<div class="text-right">
+								<a href="<?php the_permalink(); ?>" class="readmore">Read Full <i class="fa fa-long-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+		<?php endwhile;
+		}
+		wp_reset_postdata(); ?>
+	</div>
+
+	
+</div>
